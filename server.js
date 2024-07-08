@@ -1,9 +1,9 @@
 const express = require('express');
 const path = require('path');
-const { ScrapingSetIndex , ScrapingInvestor } = require('./scraper');
+const { ScrapingSetIndex, ScrapingInvestor } = require('./scraper');
 
 const app = express();
-const port = process.env.PORT || 5500 ;
+const port = process.env.PORT || 5500;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
