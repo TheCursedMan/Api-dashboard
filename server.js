@@ -3,7 +3,7 @@ const path = require('path');
 const { ScrapingSetIndex , ScrapingInvestor } = require('./scraper');
 
 const app = express();
-const port = 5500;
+const port = process.env.PORT || 5500 ;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -25,5 +25,5 @@ app.get('/api/data', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}/`);
+    console.log(`Server running at port ${port}`);
 });
