@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Fetch Example</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./Kanit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body class="d-flex flex-column align-items-center">
+
+    <!-- gold prices box -->
+    <div class="p-3 position-relative " id="goldbox">
+        <!-- efin logo -->
+        <div class="w-100">
+            <div class="">
+                <img src="./Assets/efin_logo.webp" alt="efin_logo" width="125px">
+            </div>
+        </div>
+        <!-- content box -->
+        <div class="mx-5 my-4 stats-box p-3 d-flex flex-column align-items-center">
+
+            <!-- Topic -->
+            <div class="bg-warning container-fluid text-center rounded-box px-3 py-1" style="width: fit-content;">
+                <h1 class="kanit-medium"> ราคาทองคำแท่ง </h1>
+                <p class="kanit-regular"> GOLD PRICE</p>
+            </div>
+
+            <!-- date & time -->
+            <h3 class="kanit-medium my-3" id="dateupdated"></h3>
+
+            <!-- sell & buy prices -->
+            <div class="d-flex flex-row justify-content-between w-100">
+
+                <!-- sell box -->
+                <div class="col-6 d-flex flex-column border border-white text-center rounded-box p-3" style="width: 45%;">
+                    <h3> ขายออก</h3>
+                    <h1 class="fw-semibold big-info text-danger" id="Sellprices"></h1>
+                </div>
+
+                <!-- buy box -->
+                <div class="col-6 d-flex flex-column border border-white text-center rounded-box p-3" style="width: 45%;">
+                    <h3> รับซื้อ</h3>
+                    <h1 class="fw-semibold big-info text-success" id="Buyprices"></h1>
+                </div>
+
+            </div>
+
+            <!-- %change in day -->
+            <div class="chg-box d-flex flex-row align-items-center mt-3">
+                <h1 class="fw-semibold big-info"> ลง</h1>
+                <span class="mx-2"></span>
+                <img src="#" alt="" width="100px" height="100px">
+                <span class="mx-2"></span>
+                <h1 class="fw-semibold big-info"> 200</h1>
+            </div>
+
+        </div>
+     
+        <!-- social contacts / footer -->
+        <div class="contact-box w-100 position-absolute start-0 bottom-0">
+            <div class="h-100 d-flex flex-row column-gap-3 justify-content-center">
+                <!-- contact box -->
+                <div class="container-fluid border border-white row d-flex flex-row align-items-center "  style="width: fit-content;">
+                    <div class="d-flex flex-row column-gap-2" style="width: fit-content;">
+                        <img src="" alt="" class="contact-icon">
+                        <p class="text-white mb-0">www.google.con</p>
+                    </div>
+                    <div class="d-flex flex-row column-gap-2" style="width: fit-content;">
+                        <img src="" alt="" class="contact-icon">
+                        <p class="text-white mb-0">efin</p>
+                    </div>
+                    <div class="d-flex flex-row column-gap-2" style="width: fit-content;">
+                        <img src="" alt="" class="contact-icon">
+                        <p class="text-white mb-0">efinanceThaiTv</p>
+                    </div>
+                    <div class="d-flex flex-row column-gap-2" style="width: fit-content;">
+                        <img src="" alt="" class="contact-icon">
+                        <p class="text-white mb-0">efinInvest</p>
+                    </div>
+                </div>
+                <!-- logo efin gold -->
+                <img src="" alt="" width="50px" height="100%">
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-secondary m-3" id="gold-capture"> Capture Gold graphic </button>
+    
+    <!-- oil prices box -->
+     <div class="p-3 position-relative d-flex flex-column text-center pb-5" id="oilbox" style="height: fit-content; overflow: hidden;">
+        <h1 class="text-white big-title"> ราคาน้ำมัน</h1>
+        <!-- <p> ราคาน้ำมัน <span> ... </span></p> ปรับขึ้น <span> 40 สต/ลิตร</span> -->
+        <div class="row mx-5 p-3">
+            <div class="col-9 bg-danger rounded-start d-flex align-items-center ps-3">
+                <h4 class="text-white fw-regular text-start m-0"> เบนซิน 95</h4>
+            </div>
+            <div class="col-3 bg-primary rounded-end text-white kanit-regular text-center fs-3" id="gasoline95_price_box">
+                46.84
+            </div>
+        </div>
+        <!-- แก๊สโซฮอล์ 95 -->
+        <div class="row mx-5 p-3">
+            <div class="col-9 bg-danger rounded-start d-flex align-items-center ps-3">
+                <h4 class="text-white fw-regular text-start m-0"  > แก๊สโซฮอล์ 95</h4>
+            </div>
+            <div class="col-3 bg-primary rounded-end text-white kanit-regular text-center fs-3" id="gasohol95_price_box">
+                46.84
+            </div>
+        </div>
+        <!-- แก๊สโซฮอล์ 91 -->
+        <div class="row mx-5 p-3">
+            <div class="col-9 bg-danger rounded-start d-flex align-items-center ps-3">
+                <h4 class="text-white fw-regular text-start m-0" > แก๊สโซฮอล์ 91</h4>
+            </div>
+            <div class="col-3 bg-primary rounded-end text-white kanit-regular text-center fs-3" id="gasohol91_price_box">
+                46.84
+            </div>
+        </div>
+        <!-- แก๊สโซฮอล์ E20 -->
+        <div class="row mx-5 p-3">
+            <div class="col-9 bg-danger rounded-start d-flex align-items-center ps-3">
+                <h4 class="text-white fw-regular text-start m-0">แก๊สโซฮอล์ E20</h4>
+            </div>
+            <div class="col-3 bg-primary rounded-end text-white kanit-regular text-center fs-3" id="gasohole20_price_box">
+                46.84
+            </div>
+        </div>
+        <!-- แก๊สโซฮอล์ E85 -->
+        <div class="row mx-5 p-3">
+            <div class="col-9 bg-danger rounded-start d-flex align-items-center ps-3">
+                <h4 class="text-white fw-regular text-start m-0"> แก๊สโซฮอล์ E85</h4>
+            </div>
+            <div class="col-3 bg-primary rounded-end text-white kanit-regular text-center fs-3" id="gasohole85_price_box">
+                46.84
+            </div>
+        </div>
+        <!-- ดีเซล -->
+        <div class="row mx-5 p-3">
+            <div class="col-9 bg-danger rounded-start d-flex align-items-center ps-3">
+                <h4 class="text-white fw-regular text-start m-0"> ดีเซล</h4>
+            </div>
+            <div class="col-3 bg-primary rounded-end text-white kanit-regular text-center fs-3" id="diesel_price_box">
+                46.84
+            </div>
+        </div>
+
+        <!-- contact -->
+        <div class="position-absolute bottom-0 start-0 w-100 px-3 d-flex justify-content-between align-items-center" style="background-color: rgba(122, 134, 154, 0.532);">
+            <p class="text-white align-middle mb-0"> www.efinanceThai.com</p>
+            <img src="#" alt="" width="50px" height="50px">
+         </div>
+
+         <!-- bg image -->
+        <!-- <img class="bg-img" src="../public/Assets/oil_serving.webp" alt="" class="position-absolute" width="250px"> -->
+     </div>
+
+     <button class="btn btn-secondary m-3" id="oil-capture"> Capture Oil graphic </button>
+     <!-- oil iframe -->
+     <!-- <iframe width="320" height="875" src="https://oil-price.bangchak.co.th/BcpOilPrice1/th" frameborder="0"></iframe> -->
+
+    <!-- Volume stats box -->
+     <div class="p-5 position-relative text-center" id="volumebox">
+        <div class="w-100 text-end text-white">
+            <h1> สรุปปริมาณการซื้อขายรายกลุ่ม</h1>
+            <p>ประจำวันที่ <span id="Vol_date_box"></span></p>
+        </div>
+
+        <!-- date -->
+        <script>
+            const Todaydatetime = Date.now()
+            const dateObj = new Date(Todaydatetime);
+            // Define options for formatting the date
+            const options = {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                timeZone: 'Asia/Bangkok' // Adjust to your timezone
+            };
+            const formatteddate = dateObj.toLocaleDateString('th-TH' , options)
+
+            document.getElementById('Vol_date_box').innerHTML = formatteddate
+        </script>
+
+
+        <div class="fade-black-bg">
+            <div class="row px-5 py-3">
+                <div class="col-6 d-flex flex-column text-white text-start p-3 row-gap-3">
+                    <span class="fs-4"> SET <span class="fs-3 ms-3" id="setindex_price_box"></span></span>
+                    <div class="d-flex flex-row justify-content-end">
+                        <span> <span id="setindex_tickchg_box"> </span> จุด <span id="setindex_percentchg_box"> </span></span>
+                        <img src="#" alt="" width="20px" height="20px">
+                    </div>
+                    <div class="d-flex flex-row align-items-center justify-content-between">
+                        <span> Vol.</span>
+                        <h3 class="ms-3 mb-0"> 36192 ลบ.</h3>
+                    </div>
+                </div>
+                <div class="col-6 d-flex flex-column justify-content-center text-white">
+                    <p class="ms-3"> ต่างชาติขายสุทธิ</p>
+                    <h2 id="foreignsell_box"> -123.213 ลบ.</h2>
+                </div>
+
+            </div>
+        </div>
+        <table class="table border border-white mt-3">
+            <thead class="text-center">
+                <tr > 
+                    <th class="border-end text-white" scope="col"> ประเภทนักลงทุน (ลบ.)</th>
+                    <th class="text-white" scope="col"> ซื้อ (ลบ.)</th>
+                    <th class="text-white" scope="col"> ขาย (ลบ.)</th>
+                    <th class="text-white" scope="col"> สุทธิ (ลบ.)</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                <tr >
+                    <th class="border-end text-white" scope="row"> นักลงทุนสถาบัน </th>
+                    <td class="text-white" id="Institutional_buy_box"></td>
+                    <td class="text-white" id="Institutional_sell_box"> </td>
+                    <td class="text-white" id="Institutional_sum_box"> </td>
+                </tr>
+                <tr>
+                    <th class="border-end text-white" scope="row"> บัญชีตลาดหลักทรัพย์ </th>
+                    <td class="text-white" id="exchangeacc_buy_box"> </td>
+                    <td class="text-white" id="exchangeacc_sell_box"> </td>
+                    <td class="text-white" id="exchangeacc_sum_box"></td>
+                </tr>
+                <tr>
+                    <th class="border-end text-white" scope="row"> นักลงทุนเว็บต่างชาติ </th>
+                    <td class="text-white" id="foreigninv_buy_box"></td>
+                    <td class="text-white" id="foreigninv_sell_box"></td>
+                    <td class="text-white" id="foreigninv_sum_box"></td>
+                </tr>
+                <tr>
+                    <th class="border-end text-white" scope="row"> นักลงทุนทั่วไป </th>
+                    <td class="text-white" id="commoninv_buy_box"> </td>
+                    <td class="text-white" id="commoninv_sell_box"> </td>
+                    <td class="text-white" id="commoninv_sum_box"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="position-absolute bottom-0 start-0 w-100 px-3 d-flex justify-content-between align-items-center" style="background-color: rgba(122, 134, 154, 0.532);">
+            <p class="text-white align-middle mb-0"> www.efinanceThai.com</p>
+            <img src="#" alt="" width="50px" height="50px">
+         </div>
+     </div>
+
+     <button class="btn btn-secondary m-3" id="volume-capture"> Capture SET Index Data graphic </button>
+
+    <!-- lottery lucky number box -->
+     <div class="p-5 position-relative" id="lotterybox">
+        <h1 class="text-center text-white"> ผลสลากกินแบ่งรัฐบาล</h1>
+        <h5 class="text-center text-white"> งวดประจำวันที่ 16 พฤษภาคม 2567</h5>
+        <table class="table">
+            <thead align="center">
+                <th scope="col" colspan="2" align="center" class="fs-2 text-white kanit-semibold"> รางวัลที่ 1</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2" align="center"> <h1 class="big-info text-white" id="firstprize_box"> 205690 </h1></td>
+                </tr>
+                <tr align="center">
+                    <th class="fs-2 text-white kanit-semibold" > เลขหน้า 3 ตัว </th>
+                    <th  class="fs-2 text-white kanit-semibold"> เลขท้าย 2 ตัว</th>
+                </tr>
+                <tr align="center">
+                    <td> <span class="fs-4 text-white fw-medium" id="frontthree_box_1"> 885</span> <span class="fs-4 text-white fw-medium" id="frontthree_box_2"> 747 </span></td>
+                    <td rowspan="3"> <h1 class="text-white " id="backtwo_box" style="font-size: 80px;">60</h1></td>
+                </tr>
+                <tr align="center">
+                    <th  class="fs-2 text-white kanit-semibold"> เลขท้าย 3 ตัว </th>
+                </tr>
+                <tr align="center">
+                    <td > <span class="fs-4 text-white fw-medium" id="backthree_box_1"></span> <span class="fs-4 text-white fw-medium" id="backthree_box_2"></span> </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- contact -->
+        <div class="position-absolute bottom-0 start-0 w-100 px-3 d-flex justify-content-between align-items-center" style="background-color: rgba(122, 134, 154, 0.532);">
+            <p class="text-white align-middle mb-0"> www.efinanceThai.com</p>
+            <img src="#" alt="" width="50px" height="50px">
+         </div>
+     </div>
+
+     <button class="btn btn-secondary m-3" id="lottery-capture"> Capture Lottery graphic </button>
+     <!-- web scraper -->
+     <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                const setindex_data = data.setIndexData
+                const investorGroup_data = data.investorGroup
+
+
+                const set_price = setindex_data.data_price;
+                const set_tickchg = setindex_data.tick_changed != null ? setindex_data.tick_changed : "-";
+                const set_perchg = setindex_data.tick_percent_changed != null ? setindex_data.tick_percent_changed : "-";
+
+                document.getElementById('setindex_price_box').innerText = set_price;
+                document.getElementById('setindex_tickchg_box').innerText = set_tickchg;
+                document.getElementById('setindex_percentchg_box').innerText = set_perchg;
+
+                investorGroup_data.forEach(e =>{
+                    if(e.investor == 'สถาบันในประเทศ'){
+                        document.getElementById('Institutional_buy_box').innerText = e.buy;
+                        document.getElementById('Institutional_sell_box').innerText = e.sell;
+                        document.getElementById('Institutional_sum_box').innerText = e.net;
+                    }
+                    else if(e.investor == 'บัญชีบริษัทหลักทรัพย์'){
+                        document.getElementById('exchangeacc_buy_box').innerText = e.buy;
+                        document.getElementById('exchangeacc_sell_box').innerText = e.sell;
+                        document.getElementById('exchangeacc_sum_box').innerText = e.net;
+                    }
+                    else if(e.investor == 'นักลงทุนต่างประเทศ'){
+                        document.getElementById('foreigninv_buy_box').innerText = e.buy;
+                        document.getElementById('foreigninv_sell_box').innerText = e.sell;
+                        document.getElementById('foreignsell_box').innerText = e.sell;
+                        document.getElementById('foreigninv_sum_box').innerText = e.net;
+                    }
+                    else if(e.investor == 'นักลงทุนในประเทศ'){
+                        document.getElementById('commoninv_buy_box').innerText = e.buy;
+                        document.getElementById('commoninv_sell_box').innerText = e.sell;
+                        document.getElementById('commoninv_sum_box').innerText = e.net;
+                    }
+                })
+
+
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('setindex_price_box').innerText = '###';
+                document.getElementById('setindex_tickchg_box').innerText = '###';
+                document.getElementById('setindex_percentchg_box').innerText = '###';
+            }
+        }
+
+        window.onload = fetchData;
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="apifetch.js"></script>
+    <script src="capture.js"></script>
+    
+</body>
+</html>

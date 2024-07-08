@@ -1,0 +1,74 @@
+:root{
+    --box-radius: 40px;
+    --box-width: 630px;
+    --box-height: 630px;
+}
+*{
+    font-family: "Kanit", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+}
+.big-info{
+    font-size: 48px;
+}
+.big-title{
+    font-size: 60px;
+}
+#goldbox{
+    /* facebook recommend size */
+    width: var(--box-width);
+    height: var(--box-height);
+    background: url('Assets/goldbar.webp');
+    background-position: center;
+    background-size: cover;
+}
+.stats-box{
+    border-radius: var(--box-radius);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.rounded-box{
+    border-radius: 20px;
+}
+.contact-box{
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 50px;
+}
+.contact-icon{
+    width: 20px;
+    height: 20px;
+}
+#oilbox{
+    width: var(--box-width);
+    height: var(--box-height);
+    background-color: rgb(12, 62, 142);
+}
+.fade-black-bg{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#volumebox{
+    width: var(--box-width);
+    height: var(--box-height);
+    background-color: rgb(12, 62, 142);
+}
+
+.table {
+    background-color: transparent; /* Set table background to transparent */
+}
+
+.table th,
+.table td {
+    background-color: transparent !important; /* Set background of table cells to transparent */
+    border-bottom: 0px;
+}
+#lotterybox{
+    background-color: rgb(12, 62, 142);
+    width: var(--box-width);
+    height: var(--box-height);
+}
+.bg-img{
+    position: absolute;
+    opacity: calc(0.3);
+    left: -10% ;
+    top: 0%;
+    border-radius: 35%;
+}
