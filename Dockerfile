@@ -15,3 +15,6 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+
+# Ensure Puppeteer finds the installed Chrome
+RUN npm install puppeteer-core@22.12.1

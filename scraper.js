@@ -3,7 +3,10 @@ const puppeteer = require('puppeteer');
 async function ScrapingInvestor() {
     try {
         console.log('Launching browser for ScrapingInvestor...');
-        const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+        const browser = await puppeteer.launch({
+            executablePath: '/usr/bin/google-chrome-stable',
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
         const page = await browser.newPage();
         console.log('Navigating to Investor Group page...');
         await page.goto('https://www.set.or.th/th/market/statistics/investor-type', { waitUntil: 'networkidle2', timeout: 0 });
@@ -40,7 +43,10 @@ async function ScrapingInvestor() {
 async function ScrapingSetIndex() { 
     try {
         console.log('Launching browser for ScrapingSetIndex...');
-        const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+        const browser = await puppeteer.launch({
+            executablePath: '/usr/bin/google-chrome-stable',
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
         const page = await browser.newPage();
         console.log('Navigating to SET Index page...');
         await page.goto('https://www.set.or.th/th/market/index/set/overview', { waitUntil: 'networkidle2', timeout: 0 });
