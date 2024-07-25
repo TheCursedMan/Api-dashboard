@@ -1,10 +1,11 @@
 const puppeteer = require('puppeteer');
+require('dotenv').config();
 
 async function ScrapingInvestor() {
     try {
         console.log('Launching browser for ScrapingInvestor...');
         const browser = await puppeteer.launch({
-            executablePath: '/usr/bin/google-chrome-stable',
+            executablePath: process.env.NODE_ENV ==='production' ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(),
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
         const page = await browser.newPage();
@@ -44,7 +45,7 @@ async function ScrapingSetIndex() {
     try {
         console.log('Launching browser for ScrapingSetIndex...');
         const browser = await puppeteer.launch({
-            executablePath: '/usr/bin/google-chrome-stable',
+            executablePath: process.env.NODE_ENV ==='production' ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(),
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
         const page = await browser.newPage();
